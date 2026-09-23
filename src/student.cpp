@@ -89,7 +89,21 @@ void tutupSemuaTab(CNode*& head) {
 
 // SOAL 1
 bool bukaHalaman(DNode*& head, DNode*& tail, int nomor) {
-    return false;
+    DNode* baru = new DNode;
+    baru->data = nomor;
+    baru->next = nullptr;
+    baru->prev = tail;
+
+    if (head == nullptr) {
+        // Riwayat semula kosong: catatan baru jadi head sekaligus tail.
+        head = baru;
+    } else {
+        // Riwayat sudah berisi: sambungkan catatan lama ke catatan baru.
+        tail->next = baru;
+    }
+    tail = baru;
+
+    return true;
 }
 
 // SOAL 2
